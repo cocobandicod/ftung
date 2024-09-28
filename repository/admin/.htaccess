@@ -1,0 +1,135 @@
+RewriteEngine On
+Options All -Indexes
+
+RewriteRule ^$ web/index.php [L]
+RewriteRule ^index.html$ web/index.php [L]
+RewriteRule ^index.php$ web/index.php [L]
+RewriteRule ^admin.html$ web/admin.php [L]
+
+RewriteRule ^prestasi-dosen.html$ web/prestasi_dosen.php [L]
+RewriteRule ^prestasi-dosen-add.html$ web/prestasi_dosen.php?id=add [L]
+RewriteRule ^prestasi-dosen-edit-([a-zA-Z0-9-/=]+).html$ web/prestasi_dosen.php?id=edit&kode=$1 [L]
+RewriteRule ^prestasi-dosen-del-([a-zA-Z0-9-/=]+).html$ web/prestasi_dosen.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-pendukung-dosen-([a-zA-Z0-9-/=]+).html$ web/prestasi_dosen.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^prestasi-mahasiswa.html$ web/prestasi_mahasiswa.php [L]
+RewriteRule ^prestasi-mahasiswa-add.html$ web/prestasi_mahasiswa.php?id=add [L]
+RewriteRule ^prestasi-mahasiswa-edit-([a-zA-Z0-9-/=]+).html$ web/prestasi_mahasiswa.php?id=edit&kode=$1 [L]
+RewriteRule ^prestasi-mahasiswa-del-([a-zA-Z0-9-/=]+).html$ web/prestasi_mahasiswa.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-pendukung-mahasiswa-([a-zA-Z0-9-/=]+).html$ web/prestasi_mahasiswa.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^karya-ilmiah.html$ web/karya_ilmiah.php [L]
+RewriteRule ^karya-ilmiah-add.html$ web/karya_ilmiah.php?id=add [L]
+RewriteRule ^karya-ilmiah-edit-([a-zA-Z0-9-/=]+).html$ web/karya_ilmiah.php?id=edit&kode=$1 [L]
+RewriteRule ^karya-ilmiah-del-([a-zA-Z0-9-/=]+).html$ web/karya_ilmiah.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-karya-ilmiah-([a-zA-Z0-9-/=]+).html$ web/karya_ilmiah.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^haki.html$ web/haki.php [L]
+RewriteRule ^haki-add.html$ web/haki.php?id=add [L]
+RewriteRule ^haki-edit-([a-zA-Z0-9-/=]+).html$ web/haki.php?id=edit&kode=$1 [L]
+RewriteRule ^haki-del-([a-zA-Z0-9-/=]+).html$ web/haki.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-haki-([a-zA-Z0-9-/=]+).html$ web/haki.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^penelitian.html$ web/penelitian.php [L]
+RewriteRule ^penelitian-add.html$ web/penelitian.php?id=add [L]
+RewriteRule ^penelitian-edit-([a-zA-Z0-9-/=]+).html$ web/penelitian.php?id=edit&kode=$1 [L]
+RewriteRule ^penelitian-del-([a-zA-Z0-9-/=]+).html$ web/penelitian.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-penelitian-([a-zA-Z0-9-/=]+).html$ web/penelitian.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^pengabdian.html$ web/pengabdian.php [L]
+RewriteRule ^pengabdian-add.html$ web/pengabdian.php?id=add [L]
+RewriteRule ^pengabdian-edit-([a-zA-Z0-9-/=]+).html$ web/pengabdian.php?id=edit&kode=$1 [L]
+RewriteRule ^pengabdian-del-([a-zA-Z0-9-/=]+).html$ web/pengabdian.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-pengabdian-([a-zA-Z0-9-/=]+).html$ web/pengabdian.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^kerja-sama.html$ web/kerja_sama.php [L]
+RewriteRule ^kerja-sama-add.html$ web/kerja_sama.php?id=add [L]
+RewriteRule ^kerja-sama-edit-([a-zA-Z0-9-/=]+).html$ web/kerja_sama.php?id=edit&kode=$1 [L]
+RewriteRule ^kerja-sama-del-([a-zA-Z0-9-/=]+).html$ web/kerja_sama.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-kerja-sama-([a-zA-Z0-9-/=]+).html$ web/kerja_sama.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^rencana-strategis.html$ web/rencana_strategis.php [L]
+RewriteRule ^rencana-strategis-add.html$ web/rencana_strategis.php?id=add [L]
+RewriteRule ^rencana-strategis-edit-([a-zA-Z0-9-/=]+).html$ web/rencana_strategis.php?id=edit&kode=$1 [L]
+RewriteRule ^rencana-strategis-del-([a-zA-Z0-9-/=]+).html$ web/rencana_strategis.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-rencana-strategis-([a-zA-Z0-9-/=]+).html$ web/rencana_strategis.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^tracer-study.html$ web/tracer_study.php [L]
+RewriteRule ^tracer-study-add.html$ web/tracer_study.php?id=add [L]
+RewriteRule ^tracer-study-edit-([a-zA-Z0-9-/=]+).html$ web/tracer_study.php?id=edit&kode=$1 [L]
+RewriteRule ^tracer-study-del-([a-zA-Z0-9-/=]+).html$ web/tracer_study.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-rencana-strategis-([a-zA-Z0-9-/=]+).html$ web/tracer_study.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^rencana-operasional.html$ web/rencana_operasional.php [L]
+RewriteRule ^rencana-operasional-add.html$ web/rencana_operasional.php?id=add [L]
+RewriteRule ^rencana-operasional-edit-([a-zA-Z0-9-/=]+).html$ web/rencana_operasional.php?id=edit&kode=$1 [L]
+RewriteRule ^rencana-operasional-del-([a-zA-Z0-9-/=]+).html$ web/rencana_operasional.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-rencana-operasional-([a-zA-Z0-9-/=]+).html$ web/rencana_operasional.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^sop.html$ web/sop.php [L]
+RewriteRule ^sop-add.html$ web/sop.php?id=add [L]
+RewriteRule ^sop-edit-([a-zA-Z0-9-/=]+).html$ web/sop.php?id=edit&kode=$1 [L]
+RewriteRule ^sop-del-([a-zA-Z0-9-/=]+).html$ web/sop.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-sop-([a-zA-Z0-9-/=]+).html$ web/sop.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^download.html$ web/download.php [L]
+RewriteRule ^login.html$ web/login.php?id=login [L]
+RewriteRule ^login-error.html$ web/login.php?id=login&act=error [L]
+RewriteRule ^reset.html$ web/login.php?id=reset [L]
+
+RewriteRule ^pengelola.html$ web/pengelola.php [L]
+RewriteRule ^pengelola-add.html$ web/pengelola.php?id=add [L]
+RewriteRule ^pengelola-edit-([a-zA-Z0-9-/=]+).html$ web/pengelola.php?id=edit&kode=$1 [L]
+RewriteRule ^pengelola-del-([a-zA-Z0-9-/=]+).html$ web/pengelola.php?id=del&kode=$1 [L]
+
+RewriteRule ^envisioning.html$ web/envisioning.php [L]
+RewriteRule ^envisioning-add.html$ web/envisioning.php?id=add [L]
+RewriteRule ^envisioning-edit-([a-zA-Z0-9-/=]+).html$ web/envisioning.php?id=edit&kode=$1 [L]
+RewriteRule ^envisioning-del-([a-zA-Z0-9-/=]+).html$ web/envisioning.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-envisioning-([a-zA-Z0-9-/=]+).html$ web/envisioning.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^emi.html$ web/emi.php [L]
+RewriteRule ^emi-add.html$ web/emi.php?id=add [L]
+RewriteRule ^emi-edit-([a-zA-Z0-9-/=]+).html$ web/emi.php?id=edit&kode=$1 [L]
+RewriteRule ^emi-del-([a-zA-Z0-9-/=]+).html$ web/emi.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-emi-([a-zA-Z0-9-/=]+).html$ web/emi.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^pengembangan-sdm.html$ web/pengembangan_sdm.php [L]
+RewriteRule ^pengembangan-sdm-add.html$ web/pengembangan_sdm.php?id=add [L]
+RewriteRule ^pengembangan-sdm-edit-([a-zA-Z0-9-/=]+).html$ web/pengembangan_sdm.php?id=edit&kode=$1 [L]
+RewriteRule ^pengembangan-sdm-del-([a-zA-Z0-9-/=]+).html$ web/pengembangan_sdm.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-pengembangan-sdm-([a-zA-Z0-9-/=]+).html$ web/pengembangan_sdm.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^akreditasi-prodi.html$ web/akreditasi_prodi.php [L]
+RewriteRule ^akreditasi-prodi-add.html$ web/akreditasi_prodi.php?id=add [L]
+RewriteRule ^akreditasi-prodi-edit-([a-zA-Z0-9-/=]+).html$ web/akreditasi_prodi.php?id=edit&kode=$1 [L]
+RewriteRule ^akreditasi-prodi-del-([a-zA-Z0-9-/=]+).html$ web/akreditasi_prodi.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-akreditasi-prodi-([a-zA-Z0-9-/=]+).html$ web/akreditasi_prodi.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^kurikulum.html$ web/kurikulum.php [L]
+RewriteRule ^kurikulum-add.html$ web/kurikulum.php?id=add [L]
+RewriteRule ^kurikulum-edit-([a-zA-Z0-9-/=]+).html$ web/kurikulum.php?id=edit&kode=$1 [L]
+RewriteRule ^kurikulum-del-([a-zA-Z0-9-/=]+).html$ web/kurikulum.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-kurikulum-([a-zA-Z0-9-/=]+).html$ web/kurikulum.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^pedoman-akademik.html$ web/pedoman_akademik.php [L]
+RewriteRule ^pedoman-akademik-add.html$ web/pedoman_akademik.php?id=add [L]
+RewriteRule ^pedoman-akademik-edit-([a-zA-Z0-9-/=]+).html$ web/pedoman_akademik.php?id=edit&kode=$1 [L]
+RewriteRule ^pedoman-akademik-del-([a-zA-Z0-9-/=]+).html$ web/pedoman_akademik.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-pedoman-akademik-([a-zA-Z0-9-/=]+).html$ web/pedoman_akademik.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^surat-keputusan.html$ web/surat_keputusan.php [L]
+RewriteRule ^surat-keputusan-add.html$ web/surat_keputusan.php?id=add [L]
+RewriteRule ^surat-keputusan-edit-([a-zA-Z0-9-/=]+).html$ web/surat_keputusan.php?id=edit&kode=$1 [L]
+RewriteRule ^surat-keputusan-del-([a-zA-Z0-9-/=]+).html$ web/surat_keputusan.php?id=del&kode=$1 [L]
+RewriteRule ^delete-file-surat-keputusan-([a-zA-Z0-9-/=]+).html$ web/surat_keputusan.php?id=edit&act=del_file&kode=$1 [L]
+
+RewriteRule ^upload-biodata.html$ web/upload_biodata.php?id=upload_biodata [L]
+RewriteRule ^ubah-password.html$ web/index.php [L]
+
+RewriteRule ^logout.html$ web/logout.php [L]
+
+<FilesMatch "koneksi.php">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

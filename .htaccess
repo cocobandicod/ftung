@@ -1,0 +1,88 @@
+#ErrorDocument 404 https://bkpgorontalo.bengkelit.my.id/404
+#ErrorDocument 403 https://bkpgorontalo.bengkelit.my.id/404
+
+RewriteEngine On
+Options All -Indexes
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^$ web/home.php?aktif1=active [L]
+RewriteRule ^home$ web/home.php?aktif1=active [L]
+RewriteRule ^beranda$ web/home.php?aktif1=active [L]
+RewriteRule ^informasi$ web/informasi.php?aktif4=active&menu=informasi [L]
+RewriteRule ^informasi/hal/([0-9]+)$ web/informasi.php?aktif4=active&menu=informasi&hal=$1 [L]
+RewriteRule ^informasi/([a-zA-Z0-9-]+)$ web/informasi_detail.php?id=$1 [L]
+
+RewriteRule ^tampil/gambar$ web/gambar.php [L]
+RewriteRule ^berita$ web/berita.php?menu=berita [L]
+RewriteRule ^galeri$ web/galeri.php?menu=galeri [L]
+RewriteRule ^kritik/saran$ web/kritik_saran.php?menu=kritik-dan-saran [L]
+RewriteRule ^sejarah$ web/profil.php?aktif2=active&aktif_21=active&id=sejarah&menu=Profil [L]
+RewriteRule ^struktur-organisasi$ web/profil.php?aktif2=active&aktif_22=active&id=struktur-organisasi&menu=Profil [L]
+RewriteRule ^pimpinan-fakultas$ web/pimpinan_fakultas.php?aktif2=active&aktif_23=active&id=pimpinan-fakultas&menu=Pimpinan-Fakultas [L]
+RewriteRule ^fasilitas$ web/fasilitas.php?aktif2=active&aktif_24=active&menu=Fasilitas [L]
+
+RewriteRule ^akreditasi$ web/akreditasi.php?aktif2=active&aktif_25=active&id=akreditasi&menu=Profil [L]
+RewriteRule ^layanan$ web/profil.php?aktif6=active&id=layanan&menu=Layanan [L]
+RewriteRule ^kebijakan/fakultas$ web/kebijakan.php?aktif7=active&aktif_71=active&menu=Kebijakan-Fakultas [L]
+RewriteRule ^kebijakan/pemerintah-pusat$ web/kebijakan.php?aktif7=active&aktif_72=active&menu=Kebijakan-Pemerintah-Pusat [L]
+RewriteRule ^kebijakan/universitas$ web/kebijakan.php?aktif7=active&aktif_73=active&menu=Kebijakan-Universitas [L]
+
+RewriteRule ^penjamu$ web/penjamu.php?aktif8=active&id=penjamu&menu=Penjaminan-Mutu [L]
+RewriteRule ^kalender-akademik$ web/profil.php?aktif5=active&aktif_51=active&id=kalender-akademik&menu=Akademik [L]
+RewriteRule ^dosen$ web/dosen.php?id=dosen&menu=dosen [L]
+RewriteRule ^dosen/hal/([0-9]+)$ web/dosen.php?menu=dosen&hal=$1 [L]
+RewriteRule ^dosen/([0-9]+)$ web/dosen_detail.php?id=dosen&menu=dosen&id=$1 [L]
+
+RewriteRule ^pegawai$ web/pegawai.php?id=pegawai&menu=pegawai [L]
+RewriteRule ^alumni$ web/alumni.php?id=alumni&menu=alumni [L]
+RewriteRule ^kerjasama$ web/kerja_sama.php?id=kerjasama&menu=Kerja-Sama [L]
+RewriteRule ^prestasi$ web/prestasi.php?id=prestasi&menu=Prestasi [L]
+RewriteRule ^penelitian$ web/penelitian.php?id=penelitian&menu=Penelitian [L]
+RewriteRule ^pengabdian$ web/pengabdian.php?id=pengabdian&menu=Pengabdian [L]
+RewriteRule ^layanan/([a-zA-Z0-9-]+)$ web/layanan.php?id=$1 [L]
+
+RewriteRule ^berita/([a-zA-Z0-9-]+)$ web/berita_detail.php?id=$1 [L]
+RewriteRule ^berita/hal/([0-9]+)$ web/berita.php?menu=berita&hal=$1 [L]
+RewriteRule ^galeri/hal/([0-9]+)$ web/galeri.php?menu=galeri&hal=$1 [L]
+RewriteRule ^proses/saran$ web/proses_saran.php [L]
+RewriteRule ^search/?$ web/pencarian.php?menu=pencarian&get=$1&aktif4=active [L,QSA]
+
+#----------------------------------------- PPID
+
+RewriteRule ^ppid$ ppid/home.php [L]
+RewriteRule ^ppid/$ ppid/home.php [L]
+RewriteRule ^ppid/informasi-wajib-berkala$ ppid/informasi.php?id=informasi-wajib-berkala&menu=Informasi-Wajib-Berkala [L]
+RewriteRule ^ppid/informasi-wajib-sedia-setiap-saat$ ppid/informasi.php?id=informasi-wajib-sedia-setiap-saat&menu=Informasi-Wajib-Sedia-Setiap-Saat [L]
+RewriteRule ^ppid/informasi-publik-diumumkan-secara-serta-merta$ ppid/informasi.php?id=informasi-publik-diumumkan-secara-serta-merta&menu=Informasi-Publik-Diumumkan-Secara-Serta-Merta [L]
+RewriteRule ^ppid/informasi-publik-dikecualikan$ ppid/informasi.php?id=informasi-publik-dikecualikan&menu=Informasi-Publik-Dikecualikan [L]
+RewriteRule ^ppid/formulir-permintaan-informasi$ ppid/informasi.php?id=formulir-permintaan-informasi&menu=Formulir-Permintaan-Informasi [L]
+RewriteRule ^ppid/formulir-keberatan-keluhan$ ppid/informasi.php?id=formulir-keberatan-keluhan&menu=Formulir-Keberatan-Keluhan [L]
+
+#----------------------------------------- JURUSAN
+
+RewriteRule ^jurusan/([a-zA-Z]+)$ jurusan/home.php?aktif1=active&menu=jurusan&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/sejarah$ jurusan/profil.php?aktif2=active&aktif_26=active&menu=sejarah&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/struktur-organisasi$ jurusan/profil.php?aktif2=active&aktif_21=active&menu=struktur-organisasi&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/pimpinan-jurusan$ jurusan/pimpinan_jurusan.php?aktif2=active&aktif_22=active&menu=pimpinan-fakultas&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/fasilitas$ jurusan/fasilitas.php?aktif2=active&aktif_23=active&menu=fasilitas&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/akreditasi$ jurusan/akreditasi.php?aktif2=active&aktif_24=active&menu=akreditasi&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/contact$ jurusan/profil.php?aktif2=active&aktif_27=active&menu=contact&id=$1 [L]
+
+RewriteRule ^jurusan/([a-zA-Z]+)/informasi$ jurusan/informasi.php?aktif4=active&menu=informasi&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/informasi/hal/([0-9]+)$ jurusan/informasi.php?aktif4=active&menu=informasi&id=$1&hal=$2 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/informasi/([a-zA-Z0-9-]+)$ jurusan/informasi_detail.php?aktif4=active&menu=informasi&id=$1&seo=$2 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/kurikulum$ jurusan/profil.php?aktif5=active&menu=kurikulum&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/mahasiswa$ jurusan/profil.php?aktif6=active&menu=mahasiswa&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/dosen$ jurusan/dosen.php?menu=dosen&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/dosen/hal/([0-9]+)$ jurusan/dosen.php?menu=dosen&id=$1&hal=$2 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/dosen/([0-9]+)$ jurusan/dosen_detail.php?id=dosen&menu=dosen&id=$1&nip=$2 [L]
+
+RewriteRule ^jurusan/([a-zA-Z]+)/pegawai$ jurusan/pegawai.php?menu=pegawai&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/alumni$ jurusan/alumni.php?menu=alumni&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/kerjasama$ jurusan/kerja_sama.php?menu=kerja-sama&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/prestasi$ jurusan/prestasi.php?menu=prestasi&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/penelitian$ jurusan/penelitian.php?menu=penelitian&id=$1 [L]
+RewriteRule ^jurusan/([a-zA-Z]+)/pengabdian$ jurusan/pengabdian.php?menu=pengabdian&id=$1 [L]
+RewriteRule ^prodi/([a-zA-Z0-9-]+)$ jurusan/prodi.php?aktif3=active&menu=prodi&id=$1 [L]

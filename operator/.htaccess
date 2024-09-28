@@ -1,0 +1,193 @@
+#ErrorDocument 404 https://bkpgorontalo.bengkelit.my.id/admbkp/404
+#ErrorDocument 403 https://bkpgorontalo.bengkelit.my.id/admbkp/404
+
+RewriteEngine On
+Options All -Indexes
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^$ web/login.php [L]
+RewriteRule ^index$ web/login.php [L]
+RewriteRule ^login$ web/login.php [L]
+
+
+RewriteRule ^404$ web/404.php [L]
+RewriteRule ^logout$ web/logout.php [L]
+RewriteRule ^beranda$ web/beranda.php?aktif1=active&judul=Beranda [L]
+RewriteRule ^profil$ web/profil.php?aktif2=active&judul=Profil [L]
+
+#RewriteRule ^sdm$ web/profil.php?aktif2=active&aktif21=active&judul=SDM&id=1 [L]
+#RewriteRule ^tupoksi$ web/profil.php?aktif2=active&aktif22=active&judul=TUPOKSI&id=2 [L]
+#RewriteRule ^visi/misi$ web/profil.php?aktif2=active&aktif23=active&judul=Visi-Misi&id=3 [L]
+#RewriteRule ^sejarah$ web/profil.php?aktif2=active&aktif24=active&judul=Sejarah&id=4 [L]
+
+RewriteRule ^ppid$ web/ppid.php?aktif3=active&judul=PPID [L]
+RewriteRule ^berita$ web/berita.php?aktif4=active&judul=berita [L]
+RewriteRule ^kebijakan$ web/kebijakan.php?aktif5=active&judul=kebijakan [L]
+
+RewriteRule ^dosen$ web/dosen.php?aktif6=active&judul=dosen [L]
+RewriteRule ^pegawai$ web/pegawai.php?aktif7=active&judul=pegawai [L]
+
+RewriteRule ^banner$ web/banner.php?aktif8=active&judul=banner [L]
+
+RewriteRule ^fasilitas$ web/fasilitas.php?aktif9=active&judul=fasilitas [L]
+
+RewriteRule ^alumni$ web/alumni.php?aktif10=active&judul=alumni [L]
+
+RewriteRule ^penelitian$ web/penelitian.php?aktif11=active&judul=penelitian [L]
+
+RewriteRule ^pengabdian$ web/pengabdian.php?aktif12=active&judul=pengabdian [L]
+
+RewriteRule ^kerjasama$ web/kerjasama.php?aktif13=active&judul=Kerja-Sama [L]
+
+RewriteRule ^jurnal$ web/jurnal.php?aktif14=active&judul=jurnal [L]
+
+RewriteRule ^penjamu$ web/penjamu.php?aktif15=active&judul=penjaminan-mutu [L]
+
+RewriteRule ^jurusan$ web/jurusan.php?aktif16=active&judul=jurusan [L]
+
+RewriteRule ^prodi$ web/prodi.php?aktif17=active&judul=program-studi [L]
+
+RewriteRule ^akreditasi$ web/akreditasi.php?aktif18=active&judul=Akreditasi [L]
+
+RewriteRule ^pimpinan$ web/pimpinan.php?aktif20=active&judul=Pimpinan [L]
+
+RewriteRule ^fasilitas$ web/fasilitas.php?aktif9=active&judul=Fasilitas [L]
+
+RewriteRule ^profil/jurusan/([a-zA-Z]+)$ web/profil_jurusan.php?aktif19=active&id=$1 [L]
+
+RewriteRule ^pengaturan$ web/pengaturan.php?aktif12=active&judul=Pengaturan [L]
+
+RewriteRule ^profile$ web/profile.php?judul=My-Profile [L]
+RewriteRule ^ganti/password$ web/ganti_password.php?judul=Ganti-Password [L]
+RewriteRule ^operator$ web/operator.php?judul=Operator [L]
+
+RewriteRule ^cek/login$ web/proses/proses_login.php [L]
+
+RewriteRule ^tabel/profil$ web/tabel/tabel_profil.php [L]
+RewriteRule ^tabel/profil/jurusan$ web/tabel/tabel_profil_jurusan.php [L]
+RewriteRule ^tabel/ppid$ web/tabel/tabel_ppid.php [L]
+RewriteRule ^tabel/jurusan$ web/tabel/tabel_jurusan.php [L]
+RewriteRule ^tabel/prodi$ web/tabel/tabel_prodi.php [L]
+RewriteRule ^tabel/berita$ web/tabel/tabel_berita.php [L]
+RewriteRule ^tabel/dosen$ web/tabel/tabel_dosen.php [L]
+RewriteRule ^tabel/pegawai$ web/tabel/tabel_pegawai.php [L]
+RewriteRule ^tabel/kebijakan$ web/tabel/tabel_kebijakan.php [L]
+RewriteRule ^tabel/akreditasi$ web/tabel/tabel_akreditasi.php [L]
+RewriteRule ^tabel/jurnal$ web/tabel/tabel_jurnal.php [L]
+
+RewriteRule ^tabel/link/terkait$ web/tabel/tabel_link_terkait.php [L]
+RewriteRule ^tabel/sistem/informasi$ web/tabel/tabel_sistem_informasi.php [L]
+RewriteRule ^tabel/running/text$ web/tabel/tabel_running_text.php [L]
+RewriteRule ^tabel/galeri$ web/tabel/tabel_galeri.php [L]
+RewriteRule ^tabel/pimpinan$ web/tabel/tabel_pimpinan.php [L]
+RewriteRule ^tabel/fasilitas$ web/tabel/tabel_fasilitas.php [L]
+RewriteRule ^tampil/gambar$ web/form/tampil_gambar.php [L]
+
+RewriteRule ^tabel/banner$ web/tabel/tabel_banner.php [L]
+
+RewriteRule ^tabel/penjamu$ web/tabel/tabel_penjamu.php [L]
+
+RewriteRule ^tabel/operator$ web/tabel/tabel_operator.php [L]
+
+RewriteRule ^tabel/prestasi$ web/tabel/tabel_prestasi.php [L]
+RewriteRule ^tabel/kerjasama$ web/tabel/tabel_kerjasama.php [L]
+RewriteRule ^tabel/penelitian$ web/tabel/tabel_penelitian.php [L]
+RewriteRule ^tabel/pengabdian$ web/tabel/tabel_pengabdian.php [L]
+
+RewriteRule ^profil/add$ web/form/form_profil.php?aktif2=active&judul=Profil&act=tambah [L]
+RewriteRule ^profil/edit/([0-9]+)$ web/form/form_profil.php?aktif2=active&judul=Profil&act=edit&id=$1 [L]
+RewriteRule ^ppid/edit/([0-9]+)$ web/form/form_ppid.php?aktif3=active&judul=PPID&act=edit&id=$1 [L]
+
+RewriteRule ^profil/jurusan/([a-zA-Z]+)/edit/([0-9]+)$ web/form/form_profil_jurusan.php?aktif19=active&act=edit&seo=$1&id=$2 [L]
+
+RewriteRule ^berita/add$ web/form/form_berita.php?aktif4=active&judul=Berita&act=tambah [L]
+RewriteRule ^berita/edit/([0-9]+)$ web/form/form_berita.php?aktif4=active&judul=Berita&act=edit&id=$1 [L]
+
+RewriteRule ^kebijakan/add$ web/form/form_kebijakan.php?aktif5=active&judul=Kebijakan&act=tambah [L]
+RewriteRule ^kebijakan/edit/([0-9]+)$ web/form/form_kebijakan.php?aktif5=active&judul=Kebijakan&act=edit&id=$1 [L]
+
+RewriteRule ^dosen/add$ web/form/form_dosen.php?aktif6=active&judul=dosen&act=tambah [L]
+RewriteRule ^dosen/edit/([0-9]+)$ web/form/form_dosen.php?aktif6=active&judul=dosen&act=edit&id=$1 [L]
+
+RewriteRule ^pegawai/add$ web/form/form_pegawai.php?aktif7=active&judul=pegawai&act=tambah [L]
+RewriteRule ^pegawai/edit/([0-9]+)$ web/form/form_pegawai.php?aktif7=active&judul=pegawai&act=edit&id=$1 [L]
+
+RewriteRule ^banner/add$ web/form/form_banner.php?aktif8=active&judul=banner&act=tambah [L]
+RewriteRule ^banner/edit/([0-9]+)$ web/form/form_banner.php?aktif8=active&judul=banner&act=edit&id=$1 [L]
+
+RewriteRule ^fasilitas/add$ web/form/form_fasilitas.php?aktif9=active&judul=Fasilitas&act=tambah [L]
+RewriteRule ^fasilitas/edit/([0-9]+)$ web/form/form_fasilitas.php?aktif9=active&judul=Fasilitas&act=edit&id=$1 [L]
+
+RewriteRule ^alumni/add$ web/form/form_alumni.php?aktif10=active&judul=alumni&act=tambah [L]
+RewriteRule ^alumni/edit/([0-9]+)$ web/form/form_alumni.php?aktif10=active&judul=alumni&act=edit&id=$1 [L]
+
+#RewriteRule ^penelitian/add$ web/form/form_penelitian.php?aktif11=active&judul=penelitian&act=tambah [L]
+RewriteRule ^penelitian/edit/([0-9]+)$ web/form/form_penelitian.php?aktif11=active&judul=penelitian&act=edit&id=$1 [L]
+
+#RewriteRule ^pengabdian/add$ web/form/form_pengabdian.php?aktif12=active&judul=pengabdian&act=tambah [L]
+RewriteRule ^pengabdian/edit/([0-9]+)$ web/form/form_pengabdian.php?aktif12=active&judul=pengabdian&act=edit&id=$1 [L]
+
+RewriteRule ^kerjasama/edit/([0-9]+)$ web/form/form_kerjasama.php?aktif13=active&judul=Kerja-Sama&act=edit&id=$1 [L]
+
+RewriteRule ^jurnal/add$ web/form/form_jurnal.php?aktif14=active&judul=jurnal&act=tambah [L]
+RewriteRule ^jurnal/edit/([0-9]+)$ web/form/form_jurnal.php?aktif14=active&judul=jurnal&act=edit&id=$1 [L]
+
+RewriteRule ^penjamu/add$ web/form/form_penjamu.php?aktif15=active&judul=Penjaminan-Mutu&act=tambah [L]
+RewriteRule ^penjamu/edit/([0-9]+)$ web/form/form_penjamu.php?aktif15=active&judul=Penjaminan-Mutu&act=edit&id=$1 [L]
+
+RewriteRule ^jurusan/add$ web/form/form_jurusan.php?aktif16=active&judul=jurusan&act=tambah [L]
+RewriteRule ^jurusan/edit/([0-9]+)$ web/form/form_jurusan.php?aktif16=active&judul=jurusan&act=edit&id=$1 [L]
+
+RewriteRule ^prodi/add$ web/form/form_prodi.php?aktif17=active&judul=tambah-program-studi&act=tambah [L]
+RewriteRule ^prodi/edit/([0-9]+)$ web/form/form_prodi.php?aktif17=active&judul=edit-program-studi&act=edit&id=$1 [L]
+
+RewriteRule ^akreditasi/add$ web/form/form_akreditasi.php?aktif18=active&judul=Akreditasi&act=tambah [L]
+RewriteRule ^akreditasi/edit/([0-9]+)$ web/form/form_akreditasi.php?aktif18=active&judul=Akreditasi&act=edit&id=$1 [L]
+
+RewriteRule ^operator/add$ web/form/form_operator.php?judul=Operator&act=tambah [L]
+RewriteRule ^operator/edit/([0-9]+)$ web/form/form_operator.php?judul=Operator&act=edit&id=$1 [L]
+
+RewriteRule ^pimpinan/add$ web/form/form_pimpinan.php?judul=Pimpinan&act=tambah [L]
+RewriteRule ^pimpinan/edit/([0-9]+)$ web/form/form_pimpinan.php?judul=Pimpinan&act=edit&id=$1 [L]
+
+RewriteRule ^proses/berita$ web/proses/proses_berita.php [L]
+RewriteRule ^proses/jurusan$ web/proses/proses_jurusan.php [L]
+RewriteRule ^proses/prodi$ web/proses/proses_prodi.php [L]
+RewriteRule ^proses/profil$ web/proses/proses_profil.php [L]
+RewriteRule ^proses/profil/jurusan$ web/proses/proses_profil_jurusan.php [L]
+RewriteRule ^proses/ppid$ web/proses/proses_ppid.php [L]
+RewriteRule ^proses/profile$ web/proses/proses_profile.php [L]
+RewriteRule ^proses/ganti/password$ web/proses/proses_ganti_password.php [L]
+RewriteRule ^proses/operator$ web/proses/proses_operator.php [L]
+RewriteRule ^proses/penjamu$ web/proses/proses_penjamu.php [L]
+RewriteRule ^proses/kebijakan$ web/proses/proses_kebijakan.php [L]
+RewriteRule ^proses/akreditasi$ web/proses/proses_akreditasi.php [L]
+RewriteRule ^proses/dosen$ web/proses/proses_dosen.php [L]
+RewriteRule ^proses/jurnal$ web/proses/proses_jurnal.php [L]
+RewriteRule ^proses/pimpinan$ web/proses/proses_pimpinan.php [L]
+RewriteRule ^proses/fasilitas$ web/proses/proses_fasilitas.php [L]
+RewriteRule ^proses/banner$ web/proses/proses_banner.php [L]
+RewriteRule ^proses/prestasi$ web/proses/proses_prestasi.php [L]
+RewriteRule ^proses/kerjasama$ web/proses/proses_kerjasama.php [L]
+RewriteRule ^proses/penelitian$ web/proses/proses_penelitian.php [L]
+RewriteRule ^proses/pengabdian$ web/proses/proses_pengabdian.php [L]
+
+RewriteRule ^proses/galeri$ web/proses/proses_galeri.php [L]
+
+RewriteRule ^proses/sertifikat$ web/proses/proses_sertifikat.php [L]
+RewriteRule ^proses/pengaturan$ web/proses/proses_pengaturan.php [L]
+RewriteRule ^proses/upload/profil$ web/proses/proses_upload_profil.php [L]
+RewriteRule ^proses/upload/berita$ web/proses/proses_upload_berita.php [L]
+RewriteRule ^proses/upload/layanan$ web/proses/proses_upload_layanan.php [L]
+RewriteRule ^proses/upload/informasi$ web/proses/proses_upload_informasi.php [L]
+RewriteRule ^proses/kritik/saran$ web/proses/proses_kritik_saran.php [L]
+
+
+RewriteRule ^proses/program/detail$ web/proses/proses_program_detail.php [L]
+RewriteRule ^proses/materi$ web/proses/proses_materi.php [L]
+RewriteRule ^proses/materi/detail$ web/proses/proses_materi_detail.php [L]
+RewriteRule ^proses/latihan$ web/proses/proses_latihan.php [L]
+RewriteRule ^proses/latihan/soal$ web/proses/proses_latihan_soal.php [L]
+RewriteRule ^proses/latihan/pilihan/ganda$ web/proses/proses_latihan_pilihan_ganda.php [L]
