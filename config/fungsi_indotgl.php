@@ -142,6 +142,21 @@ function publish($var, $terpilih)
 	echo "</select> ";
 }
 
+function jenis($var, $terpilih)
+{
+	$jk = array(1 => "Jurusan", "Fakultas", "Laboratorium");
+	echo "<select name='$var' id='$var' class='form-select' required>";
+	echo '<option value="" selected>Pilih --</option>';
+	for ($i = 1; $i <= 3; $i++) {
+		if ($jk[$i] == $terpilih) {
+			echo '<option value="' . $jk[$i] . '" selected>' . str_replace('-', ' ', $jk[$i]) . '</option>';
+		} else {
+			echo '<option value="' . $jk[$i] . '">' . str_replace('-', ' ', $jk[$i]) . '</option>';
+		}
+	}
+	echo "</select> ";
+}
+
 function jurusan($proses, $terpilih)
 {
 	echo "<select name='id_jurusan' id='id_jurusan' class='form-select' required>";
@@ -174,7 +189,7 @@ function level($var, $terpilih)
 
 function status_banner($var, $terpilih)
 {
-	$jk = array(1 => "fakultas", "sipil", "elektro", "informatika", "arsitektur", "industri", "senirupa", "dpw", "ppid");
+	$jk = array(1 => "fakultas", "sipil", "elektro", "informatika", "arsitektur", "industri", "senirupadesain", "dpw", "ppid");
 	echo "<select name='$var' id='$var' class='form-select' required>";
 	echo '<option value="" selected>Pilih --</option>';
 	for ($i = 1; $i <= 9; $i++) {
@@ -197,9 +212,18 @@ function seo($s)
 function combonamabln($awal, $akhir, $var, $terpilih)
 {
 	$nama_bln = array(
-		1 => "Januari", "Februari", "Maret", "April", "Mei",
-		"Juni", "Juli", "Agustus", "September",
-		"Oktober", "November", "Desember"
+		1 => "Januari",
+		"Februari",
+		"Maret",
+		"April",
+		"Mei",
+		"Juni",
+		"Juli",
+		"Agustus",
+		"September",
+		"Oktober",
+		"November",
+		"Desember"
 	);
 	echo "<select name='$var' id='$var' class='form-control form-control-uniform' required>";
 	for ($bln = $awal; $bln <= $akhir; $bln++) {

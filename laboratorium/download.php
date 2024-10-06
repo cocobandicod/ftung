@@ -7,6 +7,7 @@ require_once('../config/cek_akses.php');
 require_once('../config/crud.php');
 $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
 cek_url($url, $proses, 'edit', 'jurusan', 'seo = "' . @$_GET['id'] . '"');
+$id = $proses->tampil_data_saja('*', 'jurusan', '1=1 AND seo = "' . @$_GET['id'] . '"');
 $p = $proses->tampil_data_saja('*', 'jurusan', '1=1 AND seo = "' . @$_GET['id'] . '"');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
 $data = @getimagesize(@$filename);
@@ -19,13 +20,14 @@ $height = @$data[1];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['title']; ?></title>
-    <meta name="description" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>">
+    <title><?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['title']; ?></title>
+    <title><?= 'Download | ' . $id['nama_jurusan'] . ' | ' . $control['title']; ?></title>
+    <meta name="description" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['deskripsi']; ?>">
     <meta name="keywords" content="<?= $control['keywords']; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>assets/images/fav-icon.png">
     <!-- Place favicon.ico in the root directory -->
-    <meta property="og:title" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['title']; ?>" />
+    <meta property="og:title" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['title']; ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?= $url; ?>" />
     <meta property="og:image" content="<?= $filename; ?>" />
@@ -33,13 +35,13 @@ $height = @$data[1];
     <meta property="og:image:width" content="<?= $width; ?>" />
     <meta property="og:image:height" content="<?= $height; ?>" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:description" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>" />
-    <meta property="og:site_name" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>" />
+    <meta property="og:description" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['deskripsi']; ?>" />
+    <meta property="og:site_name" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['deskripsi']; ?>" />
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['title']; ?>">
-    <meta name="twitter:description" content="<?= 'Fasilitas | ' . $p['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>">
+    <meta name="twitter:title" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['title']; ?>">
+    <meta name="twitter:description" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['deskripsi']; ?>">
     <meta name="twitter:image" content="<?= $filename; ?>">
 
     <link rel="stylesheet" href="<?= $url; ?>assets/css/animate.min.css">
@@ -59,14 +61,14 @@ $height = @$data[1];
 
 <body>
 
-    <?= header_web_jurusan($proses, $url, $p['seo'], $p['id_jurusan']); ?>
+    <?= header_lab_jurusan($proses, $url, $id['seo'], $p['id_jurusan']); ?>
 
     <section class="uni-banner">
         <div class="container">
             <div class="uni-banner-text-area">
-                <h1 class="mb-0">Fasilitas</h1>
+                <h1 class="mb-0">Download</h1>
                 <ul>
-                    <li class="text-white me-0">Jurusan <?= @$p['nama_jurusan']; ?></li>
+                    <li class="text-white me-0">Laboratorium Jurusan <?= @$id['nama_jurusan']; ?></li>
                 </ul>
             </div>
         </div>
@@ -74,22 +76,39 @@ $height = @$data[1];
 
     <section class="blog-details pt-5 pb-5">
         <div class="container">
-            <div class="col-lg-10 me-auto ms-auto row">
-                <?php
-                $sql = $proses->tampil_data_select('*', 'fasilitas', '1=1 AND (id_jurusan = 0 OR id_jurusan = ' . $p['id_jurusan'] . ') ORDER BY id_jurusan ASC');
-                foreach ($sql as $row) {
-                ?>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="events-card">
-                            <div class="blog-thumb4">
-                                <img src="<?= $url; ?>assets/images/fasilitas/thumb_<?= $row['gambar']; ?>" style="object-fit:cover;" alt="image">
-                            </div>
-                            <div class="events-card-text">
-                                <h4 class="text-white"><?= $row['keterangan']; ?></h4>
-                            </div>
-                        </div>
+            <div class="col-lg-10 me-auto ms-auto">
+                <div class="default-section-title">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width:3%">No</th>
+                                    <th>Nama File</th>
+                                    <th class="text-center" style="width:5%">File</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                $sql = $proses->tampil_data_select('*', 'download', '1=1 AND id_jurusan = "' . $id['id_jurusan'] . '" ORDER BY id_download DESC');
+                                foreach ($sql as $row) {
+                                    if (empty($row['file'])) {
+                                        $file = '';
+                                    } else {
+                                        $file = '<a href="' . $url . 'berkas/' . $row['file'] . '"><i class="fa fa-file-download"></i></a>';
+                                    }
+                                ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no; ?></td>
+                                        <td><?= $row['nama_file']; ?></td>
+                                        <td class="text-center"><?= $file; ?></td>
+                                    </tr>
+                                <?php $no++;
+                                } ?>
+                            </tbody>
+                        </table>
                     </div>
-                <?php } ?>
+                </div>
             </div>
         </div>
     </section>

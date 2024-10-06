@@ -7,9 +7,9 @@ require_once('../config/cek_akses.php');
 require_once('../config/crud.php');
 $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

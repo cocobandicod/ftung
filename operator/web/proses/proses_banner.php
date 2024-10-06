@@ -32,6 +32,7 @@ if ($_POST['act'] == 'add') {
                 'file'      => $image_name,
                 'urutan'    => $_POST['urutan'],
                 'ket'       => $_POST['ket'],
+                'jenis'     => $_POST['jenis'],
                 'publish'   => $_POST['publish']
 
             );
@@ -43,6 +44,7 @@ if ($_POST['act'] == 'add') {
         $data[] = array(
             'urutan'     => $_POST['urutan'],
             'ket'        => $_POST['ket'],
+            'jenis'      => $_POST['jenis'],
             'publish'    => $_POST['publish']
         );
         $result = $proses->tambah_data('banner', $data);
@@ -81,6 +83,7 @@ if ($_POST['act'] == 'add') {
                 'file'      => $image_name,
                 'urutan'    => $_POST['urutan'],
                 'ket'       => $_POST['ket'],
+                'jenis'     => $_POST['jenis'],
                 'publish'   => $_POST['publish']
             );
             $result = $proses->edit_data('banner', $data, 'id', $_POST['id']);
@@ -91,6 +94,7 @@ if ($_POST['act'] == 'add') {
         $data = array(
             'urutan'    => $_POST['urutan'],
             'ket'       => $_POST['ket'],
+            'jenis'     => $_POST['jenis'],
             'publish'   => $_POST['publish']
         );
         $result = $proses->edit_data('banner', $data, 'id', $_POST['id']);

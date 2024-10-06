@@ -131,17 +131,21 @@ cek_url($url2, $proses, $_GET['act'], 'banner', 'id = "' . @$_GET['id'] . '"');
                                     ?>
                                     <div class="col-sm-6 col-lg-6">
                                         <div class="row">
-                                            <div class="mb-2 col-lg-3">
+                                            <div class="mb-2 col-lg-6">
                                                 <label class="form-label">Urutan</label>
                                                 <input type="number" name="urutan" class="form-control" value="<?= @$row['urutan']; ?>" required>
                                             </div>
-                                            <div class="mb-2 col-lg-5">
+                                            <div class="mb-2 col-lg-6">
                                                 <label class="form-label">Jenis Banner</label>
                                                 <?= status_banner('ket', @$row['ket']); ?>
                                             </div>
-                                            <div class="mb-2 col-lg-4">
+                                            <div class="mb-2 col-lg-6">
                                                 <label class="form-label">Publish</label>
                                                 <?= publish('publish', @$row['publish']); ?>
+                                            </div>
+                                            <div class="mb-2 col-lg-6">
+                                                <label class="form-label">Jenis Banner</label>
+                                                <?= jenis('jenis', @$row['jenis']); ?>
                                             </div>
                                         </div>
                                         <?= $image; ?>

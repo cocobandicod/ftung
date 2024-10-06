@@ -9,9 +9,9 @@ $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
 cek_url($url, $proses, 'edit', 'profil', 'judul_seo = "' . @$_GET['id'] . '"');
 $p = $proses->tampil_data_saja('*', 'profil', '1=1 AND judul_seo = "' . @$_GET['id'] . '"');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

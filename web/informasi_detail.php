@@ -14,9 +14,9 @@ $data = array(
 );
 $result = $proses->edit_data('berita', $data, 'judul_seo', @$_GET['id']);
 $filename = $url . 'assets/images/berita/' . @$p['file'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

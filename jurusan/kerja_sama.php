@@ -10,9 +10,9 @@ cek_url($url, $proses, 'edit', 'jurusan', 'seo = "' . @$_GET['id'] . '"');
 $p = $proses->tampil_data_saja('*', 'jurusan', '1=1 AND seo = "' . @$_GET['id'] . '"');
 $s = $proses->tampil_data_saja('*', 'kerja_sama', '1=1 AND id_jurusan = "' . @$p['id_jurusan'] . '"');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

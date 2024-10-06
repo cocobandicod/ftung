@@ -4,8 +4,8 @@
 RewriteEngine On
 Options All -Indexes
 
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteRule ^$ web/home.php?aktif1=active [L]
 RewriteRule ^home$ web/home.php?aktif1=active [L]
@@ -86,3 +86,22 @@ RewriteRule ^jurusan/([a-zA-Z]+)/prestasi$ jurusan/prestasi.php?menu=prestasi&id
 RewriteRule ^jurusan/([a-zA-Z]+)/penelitian$ jurusan/penelitian.php?menu=penelitian&id=$1 [L]
 RewriteRule ^jurusan/([a-zA-Z]+)/pengabdian$ jurusan/pengabdian.php?menu=pengabdian&id=$1 [L]
 RewriteRule ^prodi/([a-zA-Z0-9-]+)$ jurusan/prodi.php?aktif3=active&menu=prodi&id=$1 [L]
+
+#----------------------------------------- LABORATORIUM
+
+RewriteRule ^laboratorium/([a-zA-Z]+)$ laboratorium/home.php?aktif1=active&menu=jurusan&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/struktur-organisasi$ laboratorium/profil.php?aktif2=active&aktif_21=active&menu=lab-struktur-organisasi&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/visi-misi$ laboratorium/profil.php?aktif2=active&aktif_22=active&menu=lab-visi-misi&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/contact$ laboratorium/profil.php?aktif2=active&aktif_23=active&menu=lab-contact&id=$1 [L]
+
+RewriteRule ^laboratorium/([a-zA-Z]+)/peraturan$ laboratorium/info_lab.php?aktif3=active&aktif_31=active&menu=peraturan&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/jadwal$ laboratorium/info_lab.php?aktif3=active&aktif_32=active&menu=jadwal&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/prosedur-peminjaman-lab$ laboratorium/info_lab.php?aktif3=active&aktif_33=active&menu=prosedur-peminjaman-lab&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/prosedur-peminjaman-alat$ laboratorium/info_lab.php?aktif3=active&aktif_34=active&menu=prosedur-peminjaman-alat&id=$1 [L]
+
+RewriteRule ^laboratorium/([a-zA-Z]+)/informasi$ laboratorium/informasi.php?aktif4=active&menu=informasi&id=$1 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/informasi/hal/([0-9]+)$ laboratorium/informasi.php?aktif4=active&menu=informasi&id=$1&hal=$2 [L]
+RewriteRule ^laboratorium/([a-zA-Z]+)/informasi/([a-zA-Z0-9-]+)$ laboratorium/informasi_detail.php?aktif4=active&menu=informasi&id=$1&seo=$2 [L]
+
+RewriteRule ^laboratorium/([a-zA-Z]+)/download$ laboratorium/download.php?aktif5=active&menu=download&id=$1 [L]
+

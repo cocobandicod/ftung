@@ -1,14 +1,20 @@
 <?php
+error_reporting(0);
 require_once('../config/koneksi.php');
 require_once('../config/menu.php');
 require_once('../config/fungsi_indotgl.php');
-require_once('../config/class_paging.php');
 require_once('../config/cek_akses.php');
 require_once('../config/crud.php');
 $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
-cek_url($url, $proses, 'edit', 'jurusan', 'seo = "' . @$_GET['id'] . '"');
+cek_url($url, $proses, 'edit', 'berita', 'judul_seo = "' . @$_GET['seo'] . '"');
+$p = $proses->tampil_data_saja('*', 'berita', '1=1 AND judul_seo = "' . @$_GET['seo'] . '"');
 $pa = $proses->tampil_data_saja('*', 'jurusan', '1=1 AND seo = "' . @$_GET['id'] . '"');
-$filename = $url . 'assets/images/logo/' . $control['logo'];
+$dibaca = $p['dibaca'];
+$data = array(
+    'dibaca' => $dibaca + 1
+);
+$result = $proses->edit_data('berita', $data, 'judul_seo', @$_GET['id']);
+$filename = $url . 'assets/images/berita/' . @$p['file'];
 $data = @getimagesize(@$filename);
 $width = @$data[0];
 $height = @$data[1];
@@ -19,27 +25,28 @@ $height = @$data[1];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['title']; ?></title>
-    <meta name="description" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>">
+    <title>Informasi | <?= $pa['nama_jurusan'] . ' | ' . $p['judul']; ?></title>
+    <meta name="description" content="<?= $control['deskripsi']; ?>">
     <meta name="keywords" content="<?= $control['keywords']; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>assets/images/fav-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    <meta property="og:title" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['title']; ?>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<?= $url; ?>" />
-    <meta property="og:image" content="<?= $filename; ?>" />
-    <meta property="og:image:secure_url" content="<?= $filename; ?>" />
-    <meta property="og:image:width" content="<?= $width; ?>" />
-    <meta property="og:image:height" content="<?= $height; ?>" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:description" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>" />
-    <meta property="og:site_name" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>" />
 
+    <!-- Place favicon.ico in the root directory -->
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?= $p['judul']; ?>" />
+    <meta property="og:description" content="<?= potong_text(strip_tags($p['isi'])); ?>" />
+    <meta property="og:url" content="<?= $url . 'Informasi' . $pa['nama_jurusan'] . ' | ' . $p['judul_seo'] ?>" />
+    <meta property="og:site_name" content="<?= $control['title']; ?>" />
+    <meta property="article:published_time" content="<?= $p['tanggal']; ?>" />
+    <meta property="og:image" content="<?= @$filename; ?>" />
+    <meta property="og:image:width" content="<?= @$width; ?>" />
+    <meta property="og:image:height" content="<?= @$height; ?>" />
+    <meta property="og:image:type" content="image/jpeg" />
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['title']; ?>">
-    <meta name="twitter:description" content="<?= 'Informasi | ' . $pa['nama_jurusan'] . ' | ' . $control['deskripsi']; ?>">
+    <meta name="twitter:title" content="<?= $p['judul']; ?>">
+    <meta name="twitter:description" content="<?= potong_text(strip_tags($p['isi'])); ?>">
     <meta name="twitter:image" content="<?= $filename; ?>">
 
     <link rel="stylesheet" href="<?= $url; ?>assets/css/animate.min.css">
@@ -59,7 +66,7 @@ $height = @$data[1];
 
 <body>
 
-    <?= header_web_jurusan($proses, $url, $pa['seo'], $pa['id_jurusan']); ?>
+    <?= header_lab_jurusan($proses, $url, $pa['seo'], $pa['id_jurusan']); ?>
 
     <section class="uni-banner">
         <div class="container">
@@ -76,47 +83,31 @@ $height = @$data[1];
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
-                    <div class="row">
-                        <?php
-                        $p      = new paging;
-                        $batas  = 3;
-                        $posisi = $p->cariPosisi($batas);
-                        $no = $posisi + 1;
-                        $sql = $proses->tampil_data_berita('*', 'berita', 'id_jurusan = "' . $pa['id_jurusan'] . '" AND publish = "Yes" ORDER BY tanggal DESC', $posisi, $batas);
-                        foreach ($sql as $row) {
-                        ?>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                                <div class="blog-card mt-0">
-                                    <div class="blog-card-img">
-                                        <a href="<?= $url . 'informasi/' . $row['judul_seo']; ?>">
-                                            <img src="<?= $url . 'assets/images/berita/thumb_' . $row['file']; ?>" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="blog-card-text-area">
-                                        <div class="blog-date">
-                                            <ul>
-                                                <li><i class="far fa-calendar-alt"></i> <?= tgl_indo($row['tanggal']); ?></li>
-                                                <li><i class="far fa-eye"></i> <?= $row['dibaca']; ?> Views</li>
-                                                <li><i class="fas fa-user"></i> By Admin</li>
-                                            </ul>
-                                        </div>
-                                        <h4><a href="<?= $url . 'jurusan/' . $pa['seo'] . '/informasi/' . $row['judul_seo']; ?>"><?= $row['judul']; ?></a></h4>
-                                        <p><?= potong_text(strip_tags($row['isi'])); ?></p>
-                                        <a class="read-more-btn" href="<?= $url . 'berita/' . $row['judul_seo']; ?>">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
+                    <div class="blog-details-text-area details-text-area">
+                        <h2 class="mt-0"><?= $p['judul']; ?></h2>
+                        <div class="blog-date">
+                            <ul>
+                                <li><i class="far fa-calendar-alt"></i> <?= tgl_indo($p['tanggal']); ?></li>
+                                <li><i class="far fa-eye"></i> <?= $p['dibaca']; ?> Views</li>
+                                <li><i class="fas fa-user"></i> By <a href="#">Admin</a></li>
+                            </ul>
+                        </div>
+                        <img src="<?= $url . 'assets/images/berita/thumb_' . $p['file']; ?>" class="mb-3" alt="image">
+                        <div style="text-align: justify;">
+                            <?= str_replace('assets/images', '../assets/images', $p['isi']); ?>
+                        </div>
                     </div>
-                    <div class="paginations mt-30 mb-30">
-                        <ul>
-                            <?php
-                            $jmldata     = $proses->cek_count('berita', '1=1 AND id_jurusan = "' . $pa['id_jurusan'] . '" AND publish = "Yes"');
-                            $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
-                            $linkHalaman = $p->navHalaman(@$_GET['hal'], $jmlhalaman, $url . 'jurusan/' . $pa['seo'] . '/' . $_GET['menu']);
-                            echo $linkHalaman;
-                            ?>
-                        </ul>
+                    <div class="blog-text-footer mt-30 mb-30 pt-3">
+                        <!-- AddToAny BEGIN -->
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                            <a class="a2a_button_facebook"></a>
+                            <a class="a2a_button_twitter"></a>
+                            <a class="a2a_button_whatsapp"></a>
+                            <a class="a2a_button_email"></a>
+                        </div>
+                        <script async src="https://static.addtoany.com/menu/page.js"></script>
+                        <!-- AddToAny END -->
                     </div>
                 </div>
                 <div class="col-lg-5">

@@ -9,9 +9,9 @@ $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
 cek_url($url, $proses, 'edit', 'kerja_sama', 'id_jurusan = 0');
 $p = $proses->tampil_data_saja('*', 'kerja_sama', '1=1 AND id_jurusan = 0');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -81,7 +81,7 @@ $height = $data[1];
                         $nomor = 1;
                         $sql = $proses->tampil_data_select('id_prodi,prodi,id_jurusan', 'prodi', '1=1 ORDER BY id_jurusan ASC');
                         foreach ($sql as $row) {
-                        
+
                         ?>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading<?= $nomor; ?>">

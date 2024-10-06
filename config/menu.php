@@ -493,7 +493,94 @@ function header_web_jurusan($proses, $url, $seo, $id_jurusan)
                                     <?php } ?>
                                 </ul>
                             </li>
-                          <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>" class="nav-link <?= @$_GET['aktif7']; ?>">LABORATORIUM</a></li>
+                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>" class="nav-link <?= @$_GET['aktif7']; ?>">LABORATORIUM</a></li>
+                        </ul>
+                        <div class="menu-sidebar">
+                            <ul>
+                                <li><button class="popup-button"><i class="fas fa-search"></i></button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+<?php
+}
+function header_lab_jurusan($proses, $url, $seo, $id_jurusan)
+{
+    $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
+?>
+    <section class="topbar plr-100 bg-bluedark">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                    <div class="topbar-left-area">
+                        <ul>
+                            <li><a href="https://www.ung.ac.id"><i class="fas fa-home"></i> <span>Universitas Negeri Gorontalo</span></a></li>
+                            <li><a href="mailto:<?= $control['email']; ?>"><i class="fas fa-envelope"></i> <span><?= $control['email']; ?></span></a></li>
+                            <li><a href="#"><i class="fas fa-phone"></i><?= $control['telepon']; ?></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                    <div class="topbar-right-area">
+                        <ul>
+                            <li><a href="<?= $url; ?>">Fakultas Teknik</a></li>
+                            <li><a href="<?= $url; ?>ppid">PPID</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/dosen">Dosen</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/pegawai">Pegawai</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/alumni">Alumni</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/kerjasama">Kerjasama</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/prestasi">Prestasi</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/penelitian">Penelitian</a></li>
+                            <li><a href="<?= $url . 'jurusan/' . $seo; ?>/pengabdian">Pengabdian</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="navbar-area">
+
+        <div class="main-responsive-nav">
+            <div class="container-fluid plr-100">
+                <div class="mobile-nav">
+                    <a href="<?= $url; ?>home" class="logo"><img src="<?= $url; ?>assets/images/small-logo.png" alt="logo" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-nav plr-100">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="<?= $url; ?>home">
+                        <img src="<?= $url; ?>assets/images/logo.png" alt="logo" />
+                    </a>
+                    <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>" class="nav-link <?= @$_GET['aktif1']; ?>">HOME</a></li>
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link dropdown-toggle <?= @$_GET['aktif2']; ?>">PROFIL</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/struktur-organisasi" class="nav-link <?= @$_GET['aktif_21']; ?>">Struktur Organisasi</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/visi-misi" class="nav-link <?= @$_GET['aktif_22']; ?>">Visi-Misi</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/contact" class="nav-link <?= @$_GET['aktif_23']; ?>">Contact</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link dropdown-toggle <?= @$_GET['aktif3']; ?>">INFO LABORATORIUM</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/peraturan" class="nav-link <?= @$_GET['aktif_31']; ?>">Peraturan Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/jadwal" class="nav-link <?= @$_GET['aktif_32']; ?>">Jadwal Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-peminjaman-lab" class="nav-link <?= @$_GET['aktif_33']; ?>">Prosedur Peminjaman Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-peminjaman-alat" class="nav-link <?= @$_GET['aktif_34']; ?>">Prosedur Peminjaman Alat Laboratorium</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/informasi" class="nav-link <?= @$_GET['aktif4']; ?>">INFORMASI</a></li>
+                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/download" class="nav-link <?= @$_GET['aktif5']; ?>">DOWNLOAD</a></li>
                         </ul>
                         <div class="menu-sidebar">
                             <ul>

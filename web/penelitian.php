@@ -9,9 +9,9 @@ $control = $proses->tampil_data_saja('*', 'pengaturan', '1=1');
 cek_url($url, $proses, 'edit', 'penelitian', 'id_jurusan = 0');
 $p = $proses->tampil_data_saja('*', 'penelitian', '1=1 AND id_jurusan = 0');
 $filename = $url . 'assets/images/logo/' . $control['logo'];
-$data = getimagesize($filename);
-$width = $data[0];
-$height = $data[1];
+$data = @getimagesize(@$filename);
+$width = @$data[0];
+$height = @$data[1];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

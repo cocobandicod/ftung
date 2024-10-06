@@ -59,7 +59,7 @@ $height = @$data[1];
 
 <body>
 
-    <?= header_web_jurusan($proses, $url, $pa['seo'], $pa['id_jurusan']); ?>
+    <?= header_lab_jurusan($proses, $url, $pa['seo'], $pa['id_jurusan']); ?>
 
     <section class="uni-banner">
         <div class="container">
@@ -100,7 +100,7 @@ $height = @$data[1];
                                                 <li><i class="fas fa-user"></i> By Admin</li>
                                             </ul>
                                         </div>
-                                        <h4><a href="<?= $url . 'jurusan/' . $pa['seo'] . '/informasi/' . $row['judul_seo']; ?>"><?= $row['judul']; ?></a></h4>
+                                        <h4><a href="<?= $url . 'laboratorium/' . $pa['seo'] . '/informasi/' . $row['judul_seo']; ?>"><?= $row['judul']; ?></a></h4>
                                         <p><?= potong_text(strip_tags($row['isi'])); ?></p>
                                         <a class="read-more-btn" href="<?= $url . 'berita/' . $row['judul_seo']; ?>">Read More</a>
                                     </div>
@@ -113,7 +113,7 @@ $height = @$data[1];
                             <?php
                             $jmldata     = $proses->cek_count('berita', '1=1 AND id_jurusan = "' . $pa['id_jurusan'] . '" AND publish = "Yes"');
                             $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
-                            $linkHalaman = $p->navHalaman(@$_GET['hal'], $jmlhalaman, $url . 'jurusan/' . $pa['seo'] . '/' . $_GET['menu']);
+                            $linkHalaman = $p->navHalaman(@$_GET['hal'], $jmlhalaman, $url . 'laboratorium/' . $pa['seo'] . '/' . $_GET['menu']);
                             echo $linkHalaman;
                             ?>
                         </ul>
@@ -135,7 +135,7 @@ $height = @$data[1];
                             $sql = $proses->tampil_data_select('*', 'berita', 'id_jurusan = "' . $pa['id_jurusan'] . '" AND publish = "Yes" ORDER BY tanggal DESC LIMIT 3, 5');
                             foreach ($sql as $row) {
                             ?>
-                                <p class="mb-0"><b><a href="<?= $url . 'jurusan/' . $pa['seo'] . '/informasi/' . $row['judul_seo']; ?>"><?= $row['judul']; ?></a></b></p>
+                                <p class="mb-0"><b><a href="<?= $url . 'laboratorium/' . $pa['seo'] . '/informasi/' . $row['judul_seo']; ?>"><?= $row['judul']; ?></a></b></p>
                                 <p class="mb-0 mt-1"><i class="far fa-calendar-alt pe-1"></i> <?= tgl_indo($row['tanggal']); ?></p>
                                 <hr class="mt-2 mb-2">
                             <?php } ?>

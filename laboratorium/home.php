@@ -59,7 +59,7 @@ $height = @$data[1];
 
 <body>
 
-    <?= header_web_jurusan($proses, $url, $p['seo'], $p['id_jurusan']); ?>
+    <?= header_lab_jurusan($proses, $url, $p['seo'], $p['id_jurusan']); ?>
 
     <section class="uni-banner">
         <!-- slider-area -->
@@ -67,7 +67,7 @@ $height = @$data[1];
             <div class="carousel-inner">
                 <?php
                 $no = 1;
-                $pa = $proses->tampil_data_select('*', 'banner', '1=1 AND ket = "' . $p['seo'] . '" AND jenis = "Jurusan" AND publish = "Yes" ORDER BY urutan ASC');
+                $pa = $proses->tampil_data_select('*', 'banner', '1=1 AND ket = "' . $p['seo'] . '" AND jenis = "Laboratorium" AND publish = "Yes" ORDER BY urutan ASC');
                 foreach ($pa as $pr) {
                     if ($no == 1) {
                         $active = 'active';
