@@ -3,7 +3,11 @@ session_start();
 require_once('../../../config/koneksi.php');
 require_once('../../../config/cek_ajax.php');
 
-$sql = $proses->tampil_data_select('*', 'berita', '1=1 ORDER BY tanggal DESC');
+if ($_SESSION['level'] == 'Operator') {
+    $sql = $proses->tampil_data_select('*', 'berita', '1=1 AND id_jurusan = "' . $_SESSION['id_jurusan'] . '" ORDER BY tanggal DESC');
+} else {
+    $sql = $proses->tampil_data_select('*', 'berita', '1=1 ORDER BY tanggal DESC');
+}
 
 $data = array();
 $no = 1;

@@ -126,7 +126,13 @@ cek_url($url2, $proses, $_GET['act'], 'fasilitas', 'id_fasilitas = "' . @$_GET['
                                     <div class="col-sm-6 col-lg-6">
                                         <div class="mb-2 col-lg-6">
                                             <label class="form-label">Unit Kerja</label>
-                                            <?= jurusan($proses, @$row['id_jurusan']); ?>
+                                            <?php
+                                            if ($_SESSION['level'] == 'Operator') {
+                                                jurusan2($proses, @$_SESSION['id_jurusan']);
+                                            } else {
+                                                jurusan($proses, @$row['id_jurusan']);
+                                            }
+                                            ?>
                                         </div>
                                         <div class="mb-2">
                                             <label class="form-label">Fasilitas</label>

@@ -8,6 +8,7 @@ if ($_POST['act'] == 'add') {
     $pengacak  = "NDJS3289JSKS190JISJI";
     $pass = md5($pengacak . md5($_POST['password']) . $pengacak);
     $data[] = array(
+        'id_jurusan'      => $_POST['id_jurusan'],
         'nama'            => $_POST['nama'],
         'email'           => $_POST['email'],
         'telepon'         => $_POST['telepon'],
@@ -21,6 +22,7 @@ if ($_POST['act'] == 'add') {
         $pengacak  = "NDJS3289JSKS190JISJI";
         $pass = md5($pengacak . md5($_POST['password']) . $pengacak);
         $data = array(
+            'id_jurusan'      => $_POST['id_jurusan'],
             'nama'            => $_POST['nama'],
             'email'           => $_POST['email'],
             'telepon'         => $_POST['telepon'],
@@ -30,6 +32,7 @@ if ($_POST['act'] == 'add') {
         );
     } else {
         $data = array(
+            'id_jurusan'      => $_POST['id_jurusan'],
             'nama'            => $_POST['nama'],
             'email'           => $_POST['email'],
             'telepon'         => $_POST['telepon'],

@@ -111,7 +111,13 @@ cek_url($url2, $proses, $_GET['act'], 'link_jurnal', 'id_jurnal = "' . @$_GET['i
                                     <div class="col-sm-6 col-lg-6">
                                         <div class="col-sm-6 mb-2">
                                             <label class="form-label">Jurusan</label>
-                                            <?= jurusan($proses, @$row['id_jurusan']); ?>
+                                            <?php
+                                            if ($_SESSION['level'] == 'Operator') {
+                                                jurusan2($proses, @$_SESSION['id_jurusan']);
+                                            } else {
+                                                jurusan($proses, @$row['id_jurusan']);
+                                            }
+                                            ?>
                                         </div>
                                         <div class="mb-2">
                                             <label class="form-label">Nama Jurnal</label>

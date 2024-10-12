@@ -20,7 +20,7 @@ $height = @$data[1];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['title']; ?></title>
+    <title>Laboratorium <?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['title']; ?></title>
     <title><?= 'Download | ' . $id['nama_jurusan'] . ' | ' . $control['title']; ?></title>
     <meta name="description" content="<?= str_replace('-', ' ', $_GET['menu']) . ' | ' . $control['deskripsi']; ?>">
     <meta name="keywords" content="<?= $control['keywords']; ?>" />
@@ -66,7 +66,7 @@ $height = @$data[1];
     <section class="uni-banner">
         <div class="container">
             <div class="uni-banner-text-area">
-                <h1 class="mb-0">Download</h1>
+                <h1 class="mb-0">Download <?= ucwords(str_replace('-', ' ', $_GET['kat'])); ?></h1>
                 <ul>
                     <li class="text-white me-0">Laboratorium Jurusan <?= @$id['nama_jurusan']; ?></li>
                 </ul>
@@ -90,12 +90,12 @@ $height = @$data[1];
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $sql = $proses->tampil_data_select('*', 'download', '1=1 AND id_jurusan = "' . $id['id_jurusan'] . '" ORDER BY id_download DESC');
+                                $sql = $proses->tampil_data_select('*', 'download', '1=1 AND id_jurusan = "' . $id['id_jurusan'] . '" AND kategori = "' . $_GET['kat'] . '" ORDER BY id_download DESC');
                                 foreach ($sql as $row) {
                                     if (empty($row['file'])) {
                                         $file = '';
                                     } else {
-                                        $file = '<a href="' . $url . 'berkas/' . $row['file'] . '"><i class="fa fa-file-download"></i></a>';
+                                        $file = '<a href="' . $url . 'berkas/' . $row['file'] . '" target="_blank"><i class="fa fa-file-download"></i></a>';
                                     }
                                 ?>
                                     <tr>

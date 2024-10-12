@@ -64,7 +64,7 @@ $height = @$data[1];
     <section class="uni-banner">
         <div class="container">
             <div class="uni-banner-text-area">
-                <h1 class="mb-0">Informasi</h1>
+                <h1 class="mb-0">Berita</h1>
                 <ul>
                     <li class="text-white me-0">Jurusan <?= @$pa['nama_jurusan']; ?></li>
                 </ul>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 function navbar($url2)
 {
 ?>
@@ -93,14 +94,18 @@ function menu($proses, $url2)
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>profil" class="nav-link <?= @$_GET['aktif2']; ?>">
-                    <i class="ph-cards"></i>
-                    <span>
-                        Profil Fakultas
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>profil" class="nav-link <?= @$_GET['aktif2']; ?>">
+                        <i class="ph-cards"></i>
+                        <span>
+                            Profil Fakultas
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
             <li class="nav-item nav-item-submenu">
                 <a href="#" class="nav-link <?= @$_GET['aktif19']; ?>">
                     <i class="ph-cards"></i>
@@ -108,7 +113,11 @@ function menu($proses, $url2)
                 </a>
                 <ul class="nav-group-sub collapse">
                     <?php
-                    $sql = $proses->tampil_data_select('*', 'jurusan', 'id_jurusan != 0 AND link = "No"');
+                    if ($_SESSION['level'] == 'Operator') {
+                        $sql = $proses->tampil_data_select('*', 'jurusan', 'id_jurusan = "' . $_SESSION['id_jurusan'] . '" AND link = "No"');
+                    } else {
+                        $sql = $proses->tampil_data_select('*', 'jurusan', 'id_jurusan != 0 AND link = "No"');
+                    }
                     $no = 1;
                     foreach ($sql as $b) {
                         $link = $url2 . 'profil/jurusan/' . $b['seo'];
@@ -117,14 +126,47 @@ function menu($proses, $url2)
                     <?php } ?>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>ppid" class="nav-link <?= @$_GET['aktif3']; ?>">
-                    <i class="ph-cards"></i>
-                    <span>
-                        PPID
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>ppid" class="nav-link <?= @$_GET['aktif3']; ?>">
+                        <i class="ph-cards"></i>
+                        <span>
+                            PPID
+                        </span>
+                    </a>
+                </li>
+            <?php
+            }
+            if ($_SESSION['level'] == 'Operator') {
+            ?>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link <?= @$_GET['aktif22']; ?>">
+                        <i class="ph-circles-four"></i>
+                        <span>Laboratorium</span>
+                    </a>
+                    <ul class="nav-group-sub collapse">
+                        <a href="<?= $url2; ?>laboratorium/profil" class="nav-link <?= @$_GET['aktif_221']; ?>">Profil</a>
+                        <a href="<?= $url2; ?>laboratorium/info-laboratorium" class="nav-link <?= @$_GET['aktif_222']; ?>">Info Laboratorium</a>
+                        <a href="<?= $url2; ?>laboratorium/informasi" class="nav-link <?= @$_GET['aktif_223']; ?>">Informasi</a>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link <?= @$_GET['aktif_224']; ?>">Download</a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/proposal-praktikum" class="nav-link <?= @$_GET['aktif_2241']; ?>">Proposal Praktikum</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/laporan-praktikum" class="nav-link <?= @$_GET['aktif_2242']; ?>">Laporan Praktikum</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/tugas-mahasiswa" class="nav-link <?= @$_GET['aktif_2243']; ?>">Tugas Mahasiswa</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/skripsi-mahasiswa" class="nav-link <?= @$_GET['aktif_2244']; ?>">Skripsi Mahasiswa</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/penelitian-dosen" class="nav-link <?= @$_GET['aktif_2245']; ?>">Penelitian Dosen</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/surat-masuk" class="nav-link <?= @$_GET['aktif_2246']; ?>">Surat Masuk</a></li>
+                                <li class="nav-item"><a href="<?= $url2; ?>laboratorium/download/surat-keluar" class="nav-link <?= @$_GET['aktif_2247']; ?>">Surat Keluar</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            <?php } else {
+            } ?>
             <li class="nav-item">
                 <a href="<?= $url2; ?>jurusan" class="nav-link <?= @$_GET['aktif16']; ?>">
                     <i class="ph-buildings"></i>
@@ -149,14 +191,18 @@ function menu($proses, $url2)
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>berita" class="nav-link <?= @$_GET['aktif4']; ?>">
-                    <i class="ph-newspaper-clipping"></i>
-                    <span>
-                        Berita
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Operator' or $_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>berita" class="nav-link <?= @$_GET['aktif4']; ?>">
+                        <i class="ph-newspaper-clipping"></i>
+                        <span>
+                            Berita
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a href="<?= $url2; ?>dosen" class="nav-link <?= @$_GET['aktif6']; ?>">
                     <i class="ph-address-book"></i>
@@ -169,14 +215,18 @@ function menu($proses, $url2)
                     <span>Pegawai</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>kebijakan" class="nav-link <?= @$_GET['aktif5']; ?>">
-                    <i class="ph-hand-palm"></i>
-                    <span>
-                        Kebijakan
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>kebijakan" class="nav-link <?= @$_GET['aktif5']; ?>">
+                        <i class="ph-hand-palm"></i>
+                        <span>
+                            Kebijakan
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a href="<?= $url2; ?>akreditasi" class="nav-link <?= @$_GET['aktif18']; ?>">
                     <i class="ph-shield-star"></i>
@@ -185,14 +235,18 @@ function menu($proses, $url2)
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>banner" class="nav-link <?= @$_GET['aktif8']; ?>">
-                    <i class="ph-flag-banner"></i>
-                    <span>
-                        Banner
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>banner" class="nav-link <?= @$_GET['aktif8']; ?>">
+                        <i class="ph-flag-banner"></i>
+                        <span>
+                            Banner
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a href="<?= $url2; ?>fasilitas" class="nav-link <?= @$_GET['aktif9']; ?>">
                     <i class="ph-image"></i>
@@ -209,30 +263,34 @@ function menu($proses, $url2)
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>penelitian" class="nav-link <?= @$_GET['aktif11']; ?>">
-                    <i class="ph-laptop"></i>
-                    <span>
-                        Penelitian
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>pengabdian" class="nav-link <?= @$_GET['aktif12']; ?>">
-                    <i class="ph-calendar-check"></i>
-                    <span>
-                        Pengabdian
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>kerjasama" class="nav-link <?= @$_GET['aktif13']; ?>">
-                    <i class="ph-handshake"></i>
-                    <span>
-                        Kerja Sama
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>penelitian" class="nav-link <?= @$_GET['aktif11']; ?>">
+                        <i class="ph-laptop"></i>
+                        <span>
+                            Penelitian
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>pengabdian" class="nav-link <?= @$_GET['aktif12']; ?>">
+                        <i class="ph-calendar-check"></i>
+                        <span>
+                            Pengabdian
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>kerjasama" class="nav-link <?= @$_GET['aktif13']; ?>">
+                        <i class="ph-handshake"></i>
+                        <span>
+                            Kerja Sama
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a href="<?= $url2; ?>jurnal" class="nav-link <?= @$_GET['aktif14']; ?>">
                     <i class="ph-book-open"></i>
@@ -241,30 +299,34 @@ function menu($proses, $url2)
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>penjamu" class="nav-link <?= @$_GET['aktif15']; ?>">
-                    <i class="ph-stack-overflow-logo"></i>
-                    <span>
-                        Penjamu
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>dwp" class="nav-link <?= @$_GET['aktif21']; ?>">
-                    <i class="ph-users-four"></i>
-                    <span>
-                        Dharma Wanita
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= $url2; ?>pengaturan" class="nav-link <?= @$_GET['aktif12']; ?>">
-                    <i class="ph-wrench"></i>
-                    <span>
-                        Pengaturan
-                    </span>
-                </a>
-            </li>
+            <?php
+            if ($_SESSION['level'] == 'Admin') {
+            ?>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>penjamu" class="nav-link <?= @$_GET['aktif15']; ?>">
+                        <i class="ph-stack-overflow-logo"></i>
+                        <span>
+                            Penjamu
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>dwp" class="nav-link <?= @$_GET['aktif21']; ?>">
+                        <i class="ph-users-four"></i>
+                        <span>
+                            Dharma Wanita
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= $url2; ?>pengaturan" class="nav-link <?= @$_GET['aktif12']; ?>">
+                        <i class="ph-wrench"></i>
+                        <span>
+                            Pengaturan
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
         </ul>
     </div>
 <?php
@@ -577,10 +639,36 @@ function header_lab_jurusan($proses, $url, $seo, $id_jurusan)
                                     <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/jadwal" class="nav-link <?= @$_GET['aktif_32']; ?>">Jadwal Laboratorium</a></li>
                                     <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-peminjaman-lab" class="nav-link <?= @$_GET['aktif_33']; ?>">Prosedur Peminjaman Laboratorium</a></li>
                                     <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-peminjaman-alat" class="nav-link <?= @$_GET['aktif_34']; ?>">Prosedur Peminjaman Alat Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-penggunaan-bahan" class="nav-link <?= @$_GET['aktif_35']; ?>">Prosedur Penggunaan Bahan</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/prosedur-penggunaan-alat" class="nav-link <?= @$_GET['aktif_36']; ?>">Prosedur Penggunaan Alat</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/informasi" class="nav-link <?= @$_GET['aktif4']; ?>">INFORMASI</a></li>
-                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/download" class="nav-link <?= @$_GET['aktif5']; ?>">DOWNLOAD</a></li>
+                            <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/informasi" class="nav-link <?= @$_GET['aktif4']; ?>">BERITA</a></li>
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link dropdown-toggle <?= @$_GET['aktif5']; ?>">INFORMASI</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/dokumentasi-praktikum" class="nav-link <?= @$_GET['aktif_51']; ?>">Dokumentasi Praktikum</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/kegiatan-laboratorium" class="nav-link <?= @$_GET['aktif_52']; ?>">Kegiatan Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/kejuaraan" class="nav-link <?= @$_GET['aktif_53']; ?>">Kejuaraan</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/peralatan-laboratorium" class="nav-link <?= @$_GET['aktif_54']; ?>">Peralatan Laboratorium</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/bahan" class="nav-link <?= @$_GET['aktif_55']; ?>">Bahan</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/hasil-karya-mahasiswa" class="nav-link <?= @$_GET['aktif_56']; ?>">Hasil Karya & Tugas Mahasiswa</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/hasil-penelitian-mahasiswa" class="nav-link <?= @$_GET['aktif_57']; ?>">Hasil Penelitian Mahasiswa</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/hasil-penelitian-dosen" class="nav-link <?= @$_GET['aktif_58']; ?>">Hasil Penelitian Dosen</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link dropdown-toggle <?= @$_GET['aktif6']; ?>">DOWNLOAD</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/proposal-praktikum" class="nav-link <?= @$_GET['aktif_61']; ?>">Proposal Praktikum</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/laporan-praktikum" class="nav-link <?= @$_GET['aktif_62']; ?>">Laporan Praktikum</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/tugas-mahasiswa" class="nav-link <?= @$_GET['aktif_63']; ?>">Tugas Mahasiswa</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/skripsi-mahasiswa" class="nav-link <?= @$_GET['aktif_64']; ?>">Skripsi Mahasiswa</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/penelitian-dosen" class="nav-link <?= @$_GET['aktif_65']; ?>">Penelitian Dosen</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/surat-masuk" class="nav-link <?= @$_GET['aktif_66']; ?>">Surat Masuk</a></li>
+                                    <li class="nav-item"><a href="<?= $url . 'laboratorium/' . $seo; ?>/surat-keluar" class="nav-link <?= @$_GET['aktif_67']; ?>">Surat Keluar</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         <div class="menu-sidebar">
                             <ul>

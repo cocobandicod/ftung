@@ -172,6 +172,18 @@ function jurusan($proses, $terpilih)
 	echo "</select> ";
 }
 
+function jurusan2($proses, $terpilih)
+{
+	echo "<select name='id_jurusan' id='id_jurusan' class='form-select' required>";
+	$sql = $proses->tampil_data_select('*', 'jurusan', '1=1 ORDER BY id_jurusan ASC');
+	foreach ($sql as $row) {
+		if ($row['id_jurusan'] == $terpilih) {
+			echo '<option value="' . $row['id_jurusan'] . '" selected>' . $row['nama_jurusan'] . '</option>';
+		}
+	}
+	echo "</select> ";
+}
+
 function level($var, $terpilih)
 {
 	$jk = array(1 => "Admin", "Operator");

@@ -11,7 +11,7 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = md5(uniqid(rand(), TRUE));
 }
 cek_login_akses($proses, $url2, @$_SESSION['kode_user'], @$_SESSION['token']);
-cek_hak_akses($url, @$_SESSION['kode_user'], @$_SESSION['level'], 'Admin');
+cek_hak_akses($url, @$_SESSION['kode_user'], @$_SESSION['level'], 'Admin,Operator');
 cek_url($url2, $proses, $_GET['act'], 'jurusan', 'id_jurusan = "' . @$_GET['id'] . '"');
 ?>
 <!DOCTYPE html>

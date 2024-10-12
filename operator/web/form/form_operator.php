@@ -146,6 +146,12 @@ cek_url($url2, $proses, $_GET['act'], 'operator', 'id_operator = "' . @$_GET['id
                                             </div>
                                         </div>
                                         <div class="row mb-0">
+                                            <label class="col-lg-2 col-form-label">Jurusan</label>
+                                            <div class="col-lg-2 mb-2">
+                                                <?= jurusan($proses, @$row['id_jurusan']); ?>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-0">
                                             <label class="col-lg-2 col-form-label">Level</label>
                                             <div class="col-lg-2 mb-2">
                                                 <?= level('level', @$row['level']); ?>

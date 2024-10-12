@@ -132,7 +132,13 @@ cek_url($url2, $proses, $_GET['act'], 'berita', 'id = "' . @$_GET['id'] . '"');
                                         </div>
                                         <div class="col-sm-3 mb-2">
                                             <label class="form-label">Jurusan</label>
-                                            <?= jurusan($proses, @$row['id_jurusan']); ?>
+                                            <?php
+                                            if ($_SESSION['level'] == 'Operator') {
+                                                jurusan2($proses, @$_SESSION['id_jurusan']);
+                                            } else {
+                                                jurusan($proses, @$row['id_jurusan']);
+                                            }
+                                            ?>
                                         </div>
                                         <div class="col-sm-12 mb-2">
                                             <label class="form-label">Judul</label>

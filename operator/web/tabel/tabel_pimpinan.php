@@ -3,12 +3,21 @@ session_start();
 require_once('../../../config/koneksi.php');
 require_once('../../../config/cek_ajax.php');
 
-$sql = $proses->tampil_data_select(
-    'a.*,b.nama_jurusan',
-    'struktur_organisasi a LEFT JOIN jurusan b
-    ON a.id_jurusan = b.id_jurusan',
-    '1=1 ORDER BY b.id_jurusan ASC'
-);
+if ($_SESSION['level'] == 'Operator') {
+    $sql = $proses->tampil_data_select(
+        'a.*,b.nama_jurusan',
+        'struktur_organisasi a LEFT JOIN jurusan b
+        ON a.id_jurusan = b.id_jurusan',
+        '1=1 AND a.id_jurusan = "' . $_SESSION['id_jurusan'] . '" ORDER BY b.id_jurusan ASC'
+    );
+} else {
+    $sql = $proses->tampil_data_select(
+        'a.*,b.nama_jurusan',
+        'struktur_organisasi a LEFT JOIN jurusan b
+        ON a.id_jurusan = b.id_jurusan',
+        '1=1 ORDER BY b.id_jurusan ASC'
+    );
+}
 
 $data = array();
 $no = 1;

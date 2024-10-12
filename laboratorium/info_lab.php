@@ -20,7 +20,7 @@ $height = @$data[1];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $p['judul'] . ' | ' . $id['nama_jurusan'] . ' | ' . $control['title']; ?></title>
+    <title>Laboratorium <?= $p['judul'] . ' | ' . $id['nama_jurusan'] . ' | ' . $control['title']; ?></title>
     <meta name="description" content="<?= $p['judul'] . ' | ' . $control['deskripsi']; ?>">
     <meta name="keywords" content="<?= $control['keywords']; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">

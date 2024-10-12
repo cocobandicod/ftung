@@ -98,86 +98,89 @@ cek_login_akses($proses, $url2, @$_SESSION['kode_user'], @$_SESSION['token']);
                                 <div class="col-sm-12 col-lg-12">
                                     <div class="mb-3">
                                         <h6>Selamat Datang</h6>
-                                        <div class="row row-tile g-0">
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>beranda" class="btn btn-light w-100 flex-column rounded-0 rounded-top-start py-2">
-                                                    <i class="ph-house text-info ph-2x mb-1"></i>
-                                                    Beranda
-                                                </a>
+                                        <?php
+                                        if ($_SESSION['level'] == 'Admin') {
+                                        ?>
+                                            <div class="row row-tile g-0">
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>beranda" class="btn btn-light w-100 flex-column rounded-0 rounded-top-start py-2">
+                                                        <i class="ph-house text-info ph-2x mb-1"></i>
+                                                        Beranda
+                                                    </a>
 
-                                                <a href="<?= $url2 ?>galeri" class="btn btn-light w-100 flex-column rounded-0 rounded-bottom-start py-2">
-                                                    <i class="ph-image text-info ph-2x mb-1"></i>
-                                                    Galeri
-                                                </a>
+                                                    <a href="<?= $url2 ?>galeri" class="btn btn-light w-100 flex-column rounded-0 rounded-bottom-start py-2">
+                                                        <i class="ph-image text-info ph-2x mb-1"></i>
+                                                        Galeri
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>profil" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-cards text-info ph-2x mb-1"></i>
+                                                        Profil
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>link/terkait" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-link-simple text-info ph-2x mb-1"></i>
+                                                        Link Terkait
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>berita" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-newspaper-clipping text-info ph-2x mb-1"></i>
+                                                        Berita
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>sistem/informasi" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-laptop text-info ph-2x mb-1"></i>
+                                                        Sistem Informasi
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>layanan" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-handshake text-info ph-2x mb-1"></i>
+                                                        Layanan
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>agenda" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-calendar-check text-info ph-2x mb-1"></i>
+                                                        Agenda
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>informasi" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-info text-info ph-2x mb-1"></i>
+                                                        Informasi
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>sertifikat" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-shield-star text-info ph-2x mb-1"></i>
+                                                        Sertifikat
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>informasi/beranda" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-notepad text-info ph-2x mb-1"></i>
+                                                        Informasi Beranda
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>kritik/saran" class="btn btn-light w-100 flex-column rounded-0 py-2">
+                                                        <i class="ph-speaker-high text-info ph-2x mb-1"></i>
+                                                        Kritik & Saran
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?= $url2 ?>banner" class="btn btn-light w-100 flex-column rounded-0 rounded-top-end py-2">
+                                                        <i class="ph-flag-banner text-info ph-2x mb-1"></i>
+                                                        Banner
+                                                    </a>
+
+                                                    <a href="<?= $url2 ?>pengaturan" class="btn btn-light w-100 flex-column rounded-0 rounded-bottom-end py-2">
+                                                        <i class="ph-wrench text-info ph-2x mb-1"></i>
+                                                        Pengaturan
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>profil" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-cards text-info ph-2x mb-1"></i>
-                                                    Profil
-                                                </a>
-
-                                                <a href="<?= $url2 ?>link/terkait" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-link-simple text-info ph-2x mb-1"></i>
-                                                    Link Terkait
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>berita" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-newspaper-clipping text-info ph-2x mb-1"></i>
-                                                    Berita
-                                                </a>
-
-                                                <a href="<?= $url2 ?>sistem/informasi" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-laptop text-info ph-2x mb-1"></i>
-                                                    Sistem Informasi
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>layanan" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-handshake text-info ph-2x mb-1"></i>
-                                                    Layanan
-                                                </a>
-
-                                                <a href="<?= $url2 ?>agenda" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-calendar-check text-info ph-2x mb-1"></i>
-                                                    Agenda
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>informasi" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-info text-info ph-2x mb-1"></i>
-                                                    Informasi
-                                                </a>
-
-                                                <a href="<?= $url2 ?>sertifikat" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-shield-star text-info ph-2x mb-1"></i>
-                                                    Sertifikat
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>informasi/beranda" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-notepad text-info ph-2x mb-1"></i>
-                                                    Informasi Beranda
-                                                </a>
-
-                                                <a href="<?= $url2 ?>kritik/saran" class="btn btn-light w-100 flex-column rounded-0 py-2">
-                                                    <i class="ph-speaker-high text-info ph-2x mb-1"></i>
-                                                    Kritik & Saran
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="<?= $url2 ?>banner" class="btn btn-light w-100 flex-column rounded-0 rounded-top-end py-2">
-                                                    <i class="ph-flag-banner text-info ph-2x mb-1"></i>
-                                                    Banner
-                                                </a>
-
-                                                <a href="<?= $url2 ?>pengaturan" class="btn btn-light w-100 flex-column rounded-0 rounded-bottom-end py-2">
-                                                    <i class="ph-wrench text-info ph-2x mb-1"></i>
-                                                    Pengaturan
-                                                </a>
-                                            </div>
-
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

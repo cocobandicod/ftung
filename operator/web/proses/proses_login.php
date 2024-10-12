@@ -24,6 +24,7 @@ if ($result == 'gagal') {
     $proses->edit_data('operator', $data, 'id_operator', $result['id_operator']);
     $_SESSION['token'] = $tokenAkses;
     $_SESSION['kode_user'] = $result['id_operator'];
+    $_SESSION['id_jurusan'] = $result['id_jurusan'];
     $_SESSION['nama'] = $result['nama'];
     $_SESSION['level'] = $result['level'];
     echo "beranda";
